@@ -9,8 +9,8 @@ trait BuildingHelper
     $rooms = $this->room;
     $totalPower = 0;
     foreach ($rooms as $room) {
-      $totalPower += 9;
-        // $room->appliance->sum('powerConsumption');
+      $totalPower += 
+        $room->appliance->sum('power');
     }
     return $totalPower;
   }

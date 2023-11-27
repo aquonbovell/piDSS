@@ -6,6 +6,6 @@ trait ApplianceHelper
 {
 	public function getPowerConsumption(Appliance $appliance)
 	{
-		return $appliance->powerConsumption;
+		return $appliance->power;
 	}
 }
