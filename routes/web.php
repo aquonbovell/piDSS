@@ -6,7 +6,9 @@ use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,15 @@ Route::resource('/item', ItemController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('/room', RoomController::class)
+    ->middleware(['auth', 'verified']);
+
+Route::get('/search', function (Request $request) {
+    $search = $request->input('search');
+
+    Session::put('search', preg_replace('/[^A-Za-z0-9 .]/', '', $search));
+    dd($request);
+    return redirect(route('item.index'));
+})
     ->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';

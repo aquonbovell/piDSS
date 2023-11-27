@@ -17,7 +17,7 @@ class AttributeFactory extends Factory
     public function definition(): array
     {
         return [
-            'item_id' => $this->faker->numberBetween(1, 1),
+            'item_id' => $this->faker->numberBetween(1, 150),
             'name' => $this->faker->randomElement(['weight', 'capacity', 'voltage', 'size', 'wattage', 'efficiency', 'length']),
             'value' => $this->faker->numberBetween(20, 200),
             'unit' => $this->faker->randomElement(['g', 'kg', 'm', '%']),

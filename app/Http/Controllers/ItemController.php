@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Http\Requests\ItemRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -15,7 +16,21 @@ class ItemController extends Controller
 	 */
 	public function index(): View
 	{
-		return view('item.index')->with(['items' => Item::all()]);
+		$search = Session::get('search');
+
+		$itemsQuery = Item::query();
+
+		if ($search) {
+			$itemsQuery->where(function ($query) use ($search) {
+				$query->where('name', 'like', '%' . $search . '%')
+					->orWhere('description', 'like', '%' . $search . '%')
+					->orWhere('category', 'like', '%' . $search . '%')
+					->orWhere('price', 'like', '%' . $search . '%');
+			});
+		}
+
+		$items = $itemsQuery->paginate(25);
+		return view('item.index', compact('items'));
 	}
 
 	/**
@@ -47,6 +62,7 @@ class ItemController extends Controller
 	 */
 	public function show(Item $item): View
 	{
+		$this->authorize('view', $item);
 		Session::put('item_id', $item->id);
 		Session::put('item_name', $item->name);
 		return view('item.show')->with(['item' => $item]);
@@ -57,6 +73,7 @@ class ItemController extends Controller
 	 */
 	public function edit(Item $item): View
 	{
+		$this->authorize('view', $item);
 		return view('item.edit')->with(['item' => $item]);
 	}
 
@@ -81,6 +98,7 @@ class ItemController extends Controller
 	 */
 	public function destroy(Item $item): RedirectResponse
 	{
+		$this->authorize('delete', $item);
 		$item->delete();
 		return redirect()->route('item.index');
 	}
