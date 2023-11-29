@@ -12,7 +12,7 @@ services:
     runtime: docker
     envVars:
       # Database
-      - key: DATABASE_URL
+      - key: postgres://root:igP20Noxo25pYUf87zFf0KXNyahcaEjL@dpg-cljimauukbfc738pkrb0-a/pidss
         fromDatabase:
           name: pidss
           property: connectionString
