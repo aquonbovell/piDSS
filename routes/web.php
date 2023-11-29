@@ -54,7 +54,7 @@ Route::get('/search', function (Request $request) {
     $search = $request->input('search');
 
     Session::put('search', preg_replace('/[^A-Za-z0-9 .]/', '', $search));
-    dd($request);
+
     return redirect(route('item.index'));
 })
     ->middleware(['auth', 'verified']);
