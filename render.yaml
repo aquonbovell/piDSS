@@ -1,6 +1,6 @@
 # render.yaml
 databases:
-  - name: laravel-pidss
+  - name: pidss
     plan: free
     databaseName: pidss
     user: root
