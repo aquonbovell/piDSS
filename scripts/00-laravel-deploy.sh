@@ -7,4 +7,4 @@ echo "Running migrations..."
 php artisan migrate --force
 
 echo "Running seeders..."
-php artisan migrate:fresh --seed
+php artisan migrate:fresh --seed --force
