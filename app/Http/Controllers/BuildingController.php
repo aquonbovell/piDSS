@@ -62,7 +62,7 @@ class BuildingController extends Controller
      */
     public function edit(Building $building): View
     {
-        $this->authorize('show', $building);
+        $this->authorize('update', $building);
         Session::put('building_id', $building->id);
         Session::put('building_name', $building->name);
         $power = $building->calculatePowerConsumption();

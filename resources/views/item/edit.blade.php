@@ -33,7 +33,7 @@
           <x-input-error :messages="$errors->get('description')" class="mt-2" />
         </div>
         <x-input-label for="category" :value="__('Category')" />
-        <select name="category" id="category" class="w-full bg-gray-900 rounded-md">
+        <select name="category" id="category" class="w-full dark:bg-gray-900 rounded-md border-gray-300 dark:border-gray-700 focus:border-indigo-600 focus:ring-indigo-600">
           <option value="" selected disabled hidden>No Category</option>
           <option value="battery" {{old('category',$item->category) == "battery" ? "selected" :""}}>Battery</option>
           <option value="inverter" {{old('category',$item->category) == "inverter" ? "selected" :""}}>Inverter</option>
@@ -56,7 +56,7 @@
           </div>
         </div>
         <div class="py-4">
-          <x-primary-button>
+          <x-primary-button class="dark:hover:bg-white dark:focus:bg-white">
             {{ __('Save Item') }}
           </x-primary-button>
         </div>

@@ -21,7 +21,7 @@
     @if(count($buildings) > 0 )
     <div class="grid grid-cols-[repeat(auto-fit,_minmax(250px,1fr))] gap-3">
       @foreach ($buildings as $building)
-      <div class=" text-gray-900 dark:text-gray-100 overflow-hidden rounded-lg border border-slate-700 p-4 flex justify-between flex-col">
+      <div class=" text-gray-900 dark:text-gray-100 overflow-hidden rounded-lg border dark:border-slate-700 border-slate-600 p-4 flex justify-between flex-col max-w-md">
         <div>
           <p>Name: {{$building->name}}</p>
           <p>Power: {{$building->calculatePowerConsumption()}} kwh</p>

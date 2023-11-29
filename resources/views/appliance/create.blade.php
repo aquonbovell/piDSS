@@ -32,7 +32,7 @@
           <x-input-error :messages="$errors->get('power')" class="mt-2" />
         </div>
         <div class="py-4">
-          <x-primary-button class="">
+          <x-primary-button class="dark:hover:bg-white dark:focus:bg-white">
             {{ __('Create') }}
           </x-primary-button>
         </div>

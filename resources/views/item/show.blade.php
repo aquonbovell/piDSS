@@ -18,7 +18,7 @@
   @auth
   <h1 class="py-3 font-black text-3xl text-gray-900 dark:text-gray-100 text-center">View piDSS Item</h1>
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12 px-3">
-    <div class=" text-gray-900 dark:text-gray-100 overflow-hidden border rounded-lg dark:border-slate-700 p-6 flex gap-3 justify-between">
+    <div class=" text-gray-900 dark:text-gray-100 overflow-hidden border rounded-lg dark:border-slate-600 border-slate-700 p-6 flex gap-6 justify-between flex-col-reverse md:flex-row">
       <div class="self-center">
         <p>Name: {{$item->name}}</p>
         <p>Description: {{$item->description}}</p>
@@ -54,7 +54,7 @@
     </form>
     <div class="grid grid-cols-[repeat(auto-fit,_minmax(150px,300px))] gap-3 justify-center">
       @foreach($item->attribute as $attribute)
-      <div class=" text-gray-900 dark:text-gray-100 overflow-hidden rounded-lg border border-slate-600 p-4 flex justify-between flex-col">
+      <div class=" text-gray-900 dark:text-gray-100 overflow-hidden rounded-lg border border-slate-600 p-4 flex justify-between flex-col gap-3">
         <div>
           <p>Name: {{$attribute->name}}</p>
           <p>Value: {{$attribute->value}}</p>
@@ -63,7 +63,7 @@
         <div class="inline-grid gap-4 grid-cols-2 w-full">
           <form action="{{ route('attribute.show', $attribute)}}" method="get">
             @csrf
-            <x-primary-button class="w-full justify-center">
+            <x-primary-button class="w-full justify-center dark:hover:bg-white dark:focus:bg-white">
               {{__('View')}}
             </x-primary-button>
           </form>

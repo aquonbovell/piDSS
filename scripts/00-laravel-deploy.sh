@@ -6,5 +6,5 @@ composer install --no-dev --working-dir=/var/www/html
 echo "Running migrations..."
 php artisan migrate --force
 
-echo "Running seeders..."
-php artisan migrate:fresh --seed --force
+# echo "Running seeders..."
+# php artisan migrate:fresh --seed --force
