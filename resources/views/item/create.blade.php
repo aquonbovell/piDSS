@@ -1,7 +1,7 @@
 <x-app-layout>
-  <x-slot name="header">
-    <div class="flex justify-between items-baseline">
-      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+<x-slot name="header">
+    <div class="flex justify-between items-center">
+      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight py-1">
         {{ __('Item Catalog') }}
       </h2>
     </div>
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="py-4">
-          <x-primary-button>
+          <x-primary-button class="dark:hover:bg-white dark:focus:bg-white">
             {{ __('Create Item') }}
           </x-primary-button>
         </div>

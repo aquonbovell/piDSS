@@ -1,17 +1,19 @@
 <x-app-layout>
   <x-slot name="header">
-    <div class="flex justify-between items-baseline">
-      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <div class="flex justify-between items-center">
+      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight py-1">
         {{ __('Item Catalog') }}
       </h2>
       @auth
-      <form action="{{ route('item.create')}}" method="get">
+      @if(Auth::user()->role != 'customer')
+      <form action="{{ route('item.create')}}" method="get" class="self-start">
         @csrf
         <x-input-error :messages="$errors->get('message')" />
         <x-primary-button class="bg-green-600 dark:bg-green-600 focus:bg-green-400 focus-visible:bg-green-400 hover:bg-green-400 active:bg-green-400 dark:focus:bg-green-400 dark:focus-visible:bg-green-400 dark:hover:bg-green-400 dark:active:bg-green-400 text-white dark:text-white">
           {{__('Create Item')}}
         </x-primary-button>
       </form>
+      @endif
       @endauth
     </div>
   </x-slot>

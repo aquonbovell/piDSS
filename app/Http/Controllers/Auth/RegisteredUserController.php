@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -42,6 +43,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role' => 'customer'
         ]);
+
+        Session::put('user_id', $user->id);
 
         event(new Registered($user));
 

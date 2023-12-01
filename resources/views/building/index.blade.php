@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
-    <div class="flex justify-between items-baseline">
-      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <div class="flex justify-between items-center">
+      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight py-1">
         {{ __('Building Model') }}
       </h2>
       @auth
@@ -19,9 +19,9 @@
   <div class="max-w-7xl mx-auto lg:px-8 px-4">
     <h2 class="font-black text-3xl text-gray-900 dark:text-gray-100 text-center py-6">List Building Models</h2>
     @if(count($buildings) > 0 )
-    <div class="grid grid-cols-[repeat(auto-fit,_minmax(250px,1fr))] gap-3">
+    <div class="grid grid-cols-[repeat(auto-fit,_minmax(250px,1fr))] gap-4 justify-between">
       @foreach ($buildings as $building)
-      <div class=" text-gray-900 dark:text-gray-100 overflow-hidden rounded-lg border dark:border-slate-700 border-slate-600 p-4 flex justify-between flex-col max-w-md">
+      <div class=" text-gray-900 dark:text-gray-100 overflow-hidden rounded-lg border dark:border-slate-700 border-slate-600 p-4 flex flex-col max-w-md mx-auto w-full">
         <div>
           <p>Name: {{$building->name}}</p>
           <p>Power: {{$building->calculatePowerConsumption()}} kwh</p>
@@ -30,7 +30,7 @@
           <form action="{{ route('building.show', $building)}}" method="get">
             @csrf
             <x-input-error :messages="$errors->get('message')" />
-            <x-primary-button class="w-full justify-center">
+            <x-primary-button class="w-full justify-center dark:hover:bg-white dark:focus:bg-white">
               {{__('View')}}
             </x-primary-button>
           </form>

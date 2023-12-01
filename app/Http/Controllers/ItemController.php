@@ -38,6 +38,7 @@ class ItemController extends Controller
 	 */
 	public function create(): View
 	{
+		$this->authorize('create', Item::class);
 		return view('item.create');
 	}
 
@@ -73,7 +74,7 @@ class ItemController extends Controller
 	 */
 	public function edit(Item $item): View
 	{
-		$this->authorize('view', $item);
+		$this->authorize('update', $item);
 		return view('item.edit')->with(['item' => $item]);
 	}
 

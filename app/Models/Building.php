@@ -20,4 +20,8 @@ class Building extends Model
     {
         return $this->hasMany(Room::class);
     }
+    public function system(): HasMany
+    {
+        return $this->hasMany(System::class);
+    }
 }

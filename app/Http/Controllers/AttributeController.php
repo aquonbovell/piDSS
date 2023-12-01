@@ -23,6 +23,7 @@ class AttributeController extends Controller
    */
   public function create(): View
   {
+    $this->authorize('create', Attribute::class);
     return view('attribute.create');
   }
 
@@ -49,7 +50,7 @@ class AttributeController extends Controller
    * Display the specified resource.
    */
   public function show(Attribute $attribute): View
-  {
+  {$this->authorize('view', $attribute);
     return view('attribute.show')->with(['attribute' => $attribute]);
   }
 
@@ -58,6 +59,7 @@ class AttributeController extends Controller
    */
   public function edit(Attribute $attribute): View
   {
+    $this->authorize('update', $attribute);
     return view('attribute.edit')->with(['attribute' => $attribute]);
   }
 
@@ -85,6 +87,7 @@ class AttributeController extends Controller
    */
   public function destroy(Attribute $attribute): RedirectResponse
   {
+    $this->authorize('delete', $attribute);
     $item = $attribute->item;
     $attribute->delete();
     return redirect()->route('item.show', compact('item'));

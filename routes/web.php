@@ -3,9 +3,11 @@
 use App\Http\Controllers\ApplianceController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\BuildingController;
+use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\SystemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -44,10 +46,16 @@ Route::resource('/attribute', AttributeController::class)
 Route::resource('/building', BuildingController::class)
     ->middleware(['auth', 'verified']);
 
+Route::resource('/equipment', EquipmentController::class)
+    ->middleware(['auth', 'verified']);
+
 Route::resource('/item', ItemController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('/room', RoomController::class)
+    ->middleware(['auth', 'verified']);
+
+Route::resource('/system', SystemController::class)
     ->middleware(['auth', 'verified']);
 
 Route::get('/search', function (Request $request) {

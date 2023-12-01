@@ -26,6 +26,11 @@
                         {{ __('Building Model') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('system.index')" :active="request()->routeIs('system.index') || request()->routeIs('system.edit') || request()->routeIs('system.create') || request()->routeIs('system.show') || request()->routeIs('equipment.edit') || request()->routeIs('equipment.create') || request()->routeIs('equipment.show')">
+                        {{ __('System Model') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -52,8 +57,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -86,6 +90,9 @@
             <x-responsive-nav-link :href="route('building.index')" :active="request()->routeIs('building.index') || request()->routeIs('building.edit') || request()->routeIs('building.create') || request()->routeIs('building.show') || request()->routeIs('room.edit') || request()->routeIs('room.create') || request()->routeIs('room.show') || request()->routeIs('appliance.edit') || request()->routeIs('appliance.create') || request()->routeIs('appliance.show')">
                 {{ __('Building Model') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('system.index')" :active="request()->routeIs('system.index') || request()->routeIs('system.edit') || request()->routeIs('system.create') || request()->routeIs('system.show') || request()->routeIs('equipment.edit') || request()->routeIs('equipment.create') || request()->routeIs('equipment.show')">
+                {{ __('System Model') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -104,8 +111,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

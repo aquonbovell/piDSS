@@ -16,6 +16,7 @@ class BuildingController extends Controller
      */
     public function index(): View
     {
+        
         return view("building.index")->with(['buildings' => Building::where('user_id', Session::get('user_id'))->get()->all()]);
     }
 

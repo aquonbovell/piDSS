@@ -1,24 +1,25 @@
 <x-app-layout>
   <x-slot name="header">
-    <div class="flex justify-between items-baseline">
-      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <div class="flex justify-between items-center">
+      <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight py-1">
         {{ __('Item Catalog') }}
       </h2>
       @auth
-      <form action="{{ route('item.create')}}" method="get">
+      @if(Auth::user()->role != 'customer')
+      <form action="{{ route('item.create')}}" method="get" class="self-start">
         @csrf
         <x-input-error :messages="$errors->get('message')" />
         <x-primary-button class="bg-green-600 dark:bg-green-600 focus:bg-green-400 focus-visible:bg-green-400 hover:bg-green-400 active:bg-green-400 dark:focus:bg-green-400 dark:focus-visible:bg-green-400 dark:hover:bg-green-400 dark:active:bg-green-400 text-white dark:text-white">
           {{__('Create Item')}}
         </x-primary-button>
       </form>
+      @endif
       @endauth
     </div>
   </x-slot>
   @auth
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-4">
     <h2 class="py-6 font-black text-3xl text-gray-900 dark:text-gray-100 text-center">List piDSS Items</h2>
-    @if(Auth::user()->role != 'customer')
     <form action="/search" method="get">
       @csrf
       <div class="relative w-full max-w-xs">
@@ -30,7 +31,6 @@
         </button>
       </div>
     </form>
-    @endif
     @if(count($items) > 0 )
     <div class="py-4">{{ $items->links()}}</div>
     <div class="grid grid-cols-[repeat(auto-fit,_minmax(230px,1fr))] gap-3">
@@ -43,12 +43,17 @@
           <p>Price: ${{$item->price}}</p>
         </div>
         <div class="inline-grid gap-4 grid-cols-2 w-full pt-3">
-          <form action="{{ route('item.show', $item)}}" method="get">
+          <form action="{{ route('item.show', $item)}}" method="get" class="
+            @if(Auth::user()->role == 'customer')
+              col-span-full
+            @endif
+          ">
             @csrf
-            <x-primary-button class="w-full justify-center dark:hover:bg-white dark:focus:bg-white">
-              {{__('View')}}
+            <x-primary-button class="w-full col-span-full justify-center dark:hover:bg-white dark:focus:bg-white">
+              {{ __('View') }}
             </x-primary-button>
           </form>
+          @if(Auth::user()->role != 'customer')
           <form action="{{ route('item.edit', $item)}}" method="get">
             @csrf
             <x-primary-button class="w-full justify-center bg-green-600 dark:bg-green-600 focus:bg-green-400 focus-visible:bg-green-400 hover:bg-green-400 active:bg-green-400 dark:focus:bg-green-400 dark:focus-visible:bg-green-400 dark:hover:bg-green-400 dark:active:bg-green-400 text-white dark:text-white">
@@ -62,6 +67,7 @@
               {{__('Delete')}}
             </x-primary-button>
           </form>
+          @endif
         </div>
       </div>
       @endforeach

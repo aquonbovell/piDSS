@@ -1,6 +1,6 @@
 <x-app-layout>
 	<x-slot name="header">
-		<h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+		<h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight py-1">
 			{{ __('Dashboard') }}
 		</h2>
 	</x-slot>
@@ -21,6 +21,7 @@
 				<h4>Making your solar panel system decision easier.</h4>
 				<a href="{{ url('/item')}}" class="block hover:text-gray-300 w-fit">List items in piDSS</a>
 				<a href="{{ url('/building')}}" class="block hover:text-gray-300 w-fit">List building models in piDSS</a>
+				<a href="{{ url('/system')}}" class="block hover:text-gray-300 w-fit">List pv system models in piDSS</a>
 			</div>
 		</div>
 	</div>
