@@ -18,7 +18,7 @@
   @auth
   <h1 class="py-3 font-black text-3xl text-gray-900 dark:text-gray-100 text-center">View piDSS Room</h1>
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-4">
-    <div class=" text-gray-900 dark:text-gray-100 overflow-hidden border rounded-lg dark:border-slate-700 border-slate-600 p-6 flex gap-3 justify-between">
+    <div class=" text-gray-900 dark:text-gray-100 overflow-hidden border rounded-lg dark:border-slate-700 border-slate-600 p-6 flex gap-3 justify-between flex-col-reverse md:flex-row">
       <div class="self-center">
         <p>Name: {{$room->name}}</p>
         <p>Power: {{$room->calculatePowerForRoom()}} kwh</p>
