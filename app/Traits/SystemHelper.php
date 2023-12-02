@@ -32,8 +32,12 @@ trait SystemHelper
   {
     $totalCost = $this->calculateTotalCost();
     $estimantedEnergy = $this->calculateTotalEnergy();
-    $annual_savings = $estimantedEnergy * .28;
-    $roi = $totalCost / ($annual_savings - $totalCost);
-    return $roi;
+    if ($estimantedEnergy == 0 || $totalCost == 0) {
+      return 0;
+    } else {
+      $annual_savings = $estimantedEnergy * .28;
+      $roi = $totalCost / ($annual_savings - $totalCost);
+      return $roi;
+    }
   }
 }

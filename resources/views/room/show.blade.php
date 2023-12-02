@@ -59,7 +59,7 @@
         <div class="inline-grid gap-4 grid-cols-2 w-full mt-3">
           <form action="{{ route('appliance.show', $appliance)}}" method="get">
             @csrf
-            <x-primary-button class="w-full justify-center">
+            <x-primary-button class="w-full justify-center dark:hover:bg-white dark:focus:bg-white">
               {{__('View')}}
             </x-primary-button>
           </form>

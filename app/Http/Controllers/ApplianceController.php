@@ -71,11 +71,12 @@ class ApplianceController extends Controller
     public function update(ApplianceRequest $request, Appliance $appliance): RedirectResponse
     {
         $this->authorize('update', $appliance);
-        $appliances = Appliance::where('room_id', '=', Session::get('room_id'))->get()->pluck('name')->all();
+        $appliances = Appliance::where('room_id', '=', Session::get('room_id'))->where('id', '!=', $appliance->id)->get()->pluck('name')->all();
         if (!in_array($request->name, $appliances)) {
             $appliance->update([
                 'name' => $request->name,
-                'room_id' => Session::get('room_id')
+                'room_id' => Session::get('room_id'),
+                'power' => $request->power
             ]);
             return redirect()->route('appliance.show', compact('appliance'));
         }
