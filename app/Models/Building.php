@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Building extends Model
 {
     use HasFactory, BuildingHelper;
-    protected $fillable = ['name','user_id'];
+    protected $fillable = ['name','user_id' ,'annual_consumption'];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

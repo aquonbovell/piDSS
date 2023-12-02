@@ -25,6 +25,7 @@
         <div>
           <p>Name: {{$building->name}}</p>
           <p>Power: {{$building->calculatePowerConsumption()}} kwh</p>
+          <p>Annual Consumption: {{$building->annual_consumption}} kwh</p>
         </div>
         <div class="inline-grid gap-4 grid-cols-2 w-full pt-3">
           <form action="{{ route('building.show', $building)}}" method="get">

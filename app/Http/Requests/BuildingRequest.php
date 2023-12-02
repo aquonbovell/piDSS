@@ -22,7 +22,8 @@ class BuildingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string','max:50']
+            'name' => ['required', 'string', 'max:50'],
+            'annual_consumption' => ['required', 'numeric']
         ];
     }
 }

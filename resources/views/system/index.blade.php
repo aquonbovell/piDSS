@@ -26,7 +26,6 @@
           <p>Name: {{$system->name}}</p>
           <p>Building: {{$system->building->name}}</p>
           <p>Total Equipment Cost: ${{number_format($system->calculateTotalCost(),2)}}</p>
-          <p>Total Energy: {{number_format($system->calculateTotalEnergy())}} kwh</p>
         </div>
         <div class="inline-grid gap-4 grid-cols-2 w-full pt-3">
           <form action="{{ route('system.show', $system)}}" method="get">

@@ -38,7 +38,8 @@ class BuildingController extends Controller
         if (!in_array($request->name, $buildings)) {
             $building = Building::create([
                 'name' => $request->name,
-                'user_id' => $request->user()->id
+                'user_id' => $request->user()->id,
+                'annual_consumption' => $request->annual_consumption
             ]);
             return redirect()->route('building.show', compact('building'));
         }
@@ -80,7 +81,8 @@ class BuildingController extends Controller
         $buildings = Building::where('user_id', '=', $request->user()->id)->get()->pluck('name')->all();
         if (!in_array($request->name, $buildings)) {
             $building->update([
-                'name' => $request->name
+                'name' => $request->name,
+                'annual_consumption' => $request->annual_consumption
             ]);
             return redirect()->route('building.show', compact('building'));
         }

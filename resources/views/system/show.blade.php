@@ -22,8 +22,11 @@
       <div class="self-center">
         <p>Name: {{$system->name}}</p>
         <p>Building: {{$system->building->name}}</p>
+        <p>Budget: ${{number_format($system->budget,2)}}</p>
         <p>Total Equipment Cost: ${{number_format($system->calculateTotalCost(),2)}}</p>
         <p>Total Energy: {{number_format($system->calculateTotalEnergy())}} kwh</p>
+        <p>Total Consumption: {{number_format($system->building->calculatePowerConsumption())}} kwh</p>
+        <p>ROI : ${{number_format($system->calculateROI(),2)}}</p>
         <div class="inline-grid gap-4 grid-cols-2 w-full py-3">
           <form action="{{ route('system.edit', $system)}}" method="get">
             @csrf

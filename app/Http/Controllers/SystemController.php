@@ -42,6 +42,7 @@ class SystemController extends Controller
         $system = System::create([
             'name' => $request->name,
             'building_id' => $request->building_id,
+            'budget' => $request->budget,
         ]);
         return redirect(route('system.show', compact('system')));
     }
@@ -77,6 +78,7 @@ class SystemController extends Controller
         $system->update([
             'name' => $request->name,
             'building_id' => $request->building_id,
+            'budget' => $request->budget,
         ]);
         return redirect(route('system.show', compact('system')));
     }

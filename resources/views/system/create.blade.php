@@ -17,6 +17,11 @@
           <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
           <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
+        <div>
+          <x-input-label for="budget" :value="__('Budget')" />
+          <x-text-input id="budget" class="block mt-1 w-full" type="text" name="budget" :value="old('budget')" required autofocus autocomplete="budget" />
+          <x-input-error :messages="$errors->get('budget')" class="mt-2" />
+        </div>
         <x-input-label for="building_id" :value="__('Building')" />
         <select name="building_id" id="building_id" class="w-full bg-gray-900 rounded-md">
           <option value="" selected disabled hidden>No Building</option>

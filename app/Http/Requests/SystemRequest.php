@@ -23,7 +23,8 @@ class SystemRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:50'],
-            'building_id' => ['required', 'integer']
+            'building_id' => ['required', 'integer'],
+            'budget' => ['required', 'numeric']
         ];
     }
 }

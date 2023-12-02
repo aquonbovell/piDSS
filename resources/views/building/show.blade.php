@@ -22,6 +22,7 @@
       <div class="self-center">
         <p>Name: {{$building->name}}</p>
         <p>Power: {{$building->calculatePowerConsumption()}} kwh</p>
+        <p>Annual Consumption: {{$building->annual_consumption}} kwh</p>
         <div class="inline-grid gap-4 grid-cols-2 w-full py-3">
           <form action="{{ route('building.edit', $building)}}" method="get">
             @csrf

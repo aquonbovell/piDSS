@@ -27,4 +27,13 @@ trait SystemHelper
     }
     return $totalCost;
   }
+
+  public function calculateROI()
+  {
+    $totalCost = $this->calculateTotalCost();
+    $estimantedEnergy = $this->calculateTotalEnergy();
+    $annual_savings = $estimantedEnergy * .28;
+    $roi = $totalCost / ($annual_savings - $totalCost);
+    return $roi;
+  }
 }
