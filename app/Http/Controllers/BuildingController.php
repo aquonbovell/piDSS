@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BuildingRequest;
 use App\Models\Building;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -75,10 +74,10 @@ class BuildingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Building $building): RedirectResponse
+    public function update(BuildingRequest $request, Building $building): RedirectResponse
     {
         $this->authorize('update', $building);
-        $buildings = Building::where('user_id', '=', $request->user()->id)->get()->pluck('name')->all();
+        $buildings = Building::where('user_id', '=', $request->user()->id)->where('id' , '!=', $building->id)->get()->pluck('name')->all();
         if (!in_array($request->name, $buildings)) {
             $building->update([
                 'name' => $request->name,
