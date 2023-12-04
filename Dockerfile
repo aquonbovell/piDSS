@@ -1,6 +1,4 @@
-# Dockerfile
-# Use base image for container
-FROM richarvey/nginx-php-fpm:latest
+FROM richarvey/nginx-php-fpm:2.1.4
 
 COPY . .
 
@@ -18,5 +16,8 @@ ENV LOG_CHANNEL stderr
 
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
+
+# Install node and npm for Vite
+# RUN apk add --update nodejs npm
 
 CMD ["/start.sh"]
