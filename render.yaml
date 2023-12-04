@@ -1,6 +1,6 @@
 # render.yaml
 databases:
-  - name: pidss
+  - name: pidss-db
     plan: free
     databaseName: pidss
     user: root
