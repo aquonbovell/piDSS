@@ -1,5 +1,5 @@
 # Use the official PHP 7.4 Apache base image
-FROM php:7.4-apache
+FROM php:8.3-apache
 
 # Update package lists and install necessary dependencies
 RUN apt-get update && apt-get install -y \
