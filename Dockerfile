@@ -1,4 +1,4 @@
-FROM richarvey/nginx-php-fpm:latest
+FROM richarvey/nginx-php-fpm:3.1.0
 
 COPY . .
 
@@ -16,8 +16,5 @@ ENV LOG_CHANNEL stderr
 
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
-
-# Install node and npm for Vite
-# RUN apk add --update nodejs npm
 
 CMD ["/start.sh"]
