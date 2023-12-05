@@ -1,20 +1,20 @@
-FROM richarvey/nginx-php-fpm:3.1.0
+# Dockerfile
+# Use base image for container
+FROM richarvey/nginx-php-fpm:3.1.6
 
-# Install Node.js and npm
-RUN apk update && \
-    apk add --no-cache nodejs npm
+# Copy all application code into your Docker container
+COPY . .
 
-# Set working directory
-WORKDIR /var/www/html
+RUN apk update
 
-# Copy only necessary files
-COPY package.json package-lock.json ./
+# Install the `npm` package
+RUN apk add --no-cache npm
 
-# Install dependencies
+# Install NPM dependencies
 RUN npm install
 
-# Copy the rest of your Laravel application
-COPY . .
+# Build Vite assets
+RUN npm run build
 
 # Image config (the rest of your configuration remains unchanged)
 ENV SKIP_COMPOSER 1
